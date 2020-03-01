@@ -107,6 +107,10 @@ main a {
      margin-top: 29px;
 }
 
+main a:hover {
+     filter: brightness(0.8);
+}
+
 .phone {
      height: 458px;
      width: 215px;
