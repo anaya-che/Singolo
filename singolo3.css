@@ -202,7 +202,7 @@ address, a {
 
 footer {
      background-color: #2d303a;
-     padding: 30px 32px 22px 42px;
+     padding: 30px 32px 24px 42px;
      display: grid;
      grid-template-columns: 100px 200px;
      justify-content: space-between;
