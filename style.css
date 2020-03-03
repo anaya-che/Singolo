@@ -424,6 +424,13 @@ textarea:focus {
      font-weight: 400;
 }
 
+::-ms-input-placeholder {
+     font-size: 12px;
+     color: #f48c8f;
+     font-family: "Lato";
+     font-weight: 400;
+}
+
 /* width */
 textarea::-webkit-scrollbar {
      width: 10px;
