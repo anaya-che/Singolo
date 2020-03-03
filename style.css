@@ -401,7 +401,7 @@ input[type=submit] {
 }
 
 input[type=submit]:hover {
-     color: #f0d8d9;   
+     color: #dcdcdc;   
 }
 
 input[type=submit]:focus {
