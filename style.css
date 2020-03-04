@@ -300,7 +300,7 @@ header nav a:hover {
 
 .about-us {
      background: #f2f2f2;
-     padding: 59px 40px 39px 40px;
+     padding: 59px 40px 62px 40px;
      border-bottom: 6px solid #ffffff;
 }
 
@@ -325,19 +325,23 @@ header nav a:hover {
      display: grid;
      grid-template-columns: repeat(4, 40px);
      list-style: none;
-     padding: 30px 0;
+     padding: 2px 0;
 }
  
-.facebook {
+.social-icons a {
      border: 1px solid #666d89;
      border-radius: 50%;
-     padding: 12px 11px 6px 11px;
+     display: inline-block;
+     width: 30px;
+     height: 30px;
+}
+
+.facebook {
+     padding: 8px 11px;
 }
  
 .google, .linkedin, .twitter {
-     border: 1px solid #666d89;
-     border-radius: 50%;
-     padding: 12px 8px 6px 8px;
+     padding: 8px;
 }
  
 .social-icons a:hover {
@@ -479,17 +483,28 @@ textarea::-webkit-scrollbar-thumb:hover {
 
 footer {
      background-color: #2d303a;
-     padding: 27px 32px 24px 42px;
+     padding: 2px 32px 19px 42px;
      display: grid;
      grid-template-columns: repeat(2, 200px);
      justify-content: space-between;
+}
+
+footer p {
+     margin-top: 25px;
 }
 
 footer ul {
      display: grid;
      grid-template-columns: repeat(4, 40px);
      list-style: none;
-     margin-top: 3px;
+}
+
+footer a {
+     border: 1px solid #666d89;
+     border-radius: 50%;
+     display: inline-block;
+     width: 30px;
+     height: 30px;
 }
 
 footer a:hover {
