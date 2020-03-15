@@ -11,9 +11,9 @@
     <header class="header" id="home">
         <h1 class="header__logo">singolo</h1>
         <nav class="header__nav nav-header">
-            <ul class="nav-header__list">
+            <ul class="nav-header__list" id="header-menu">
                 <li class="nav-header__item">
-                    <a class="nav-header__link" href="#home">HOME</a>
+                    <a class="nav-header__link active" href="#home">HOME</a>
                 </li>
                 <li class="nav-header__item">
                     <a class="nav-header__link" href="#services">SERVICES</a>
@@ -31,23 +31,32 @@
         </nav>
     </header>
     <main class="main">
-        <section class="slider">
-            <a class="slider__previous-page" href="#"><img src="assets/previous.png" alt="Previous Page"></a>
-            <div class="slider__phone phone-slider">
-                <img class="phone-slider__wallpaper" src="assets/phone1.png" alt="Phone wallpaper">
-                <div class="phone-slider__button"></div>
-                <div class="phone-slider__button-center"></div>
-                <div class="phone-slider__speaker"></div>
-                <div class="phone-slider__camera"></div>
+        <section class="slider" id="slider">
+            <a class="slider__previous-page" id="prev_page" href="#"><img src="assets/chev1.png" alt="Previous Page"></a>
+            <div class="slider__page1" id="page1">
+                <div class="slider__phone phone-slider" id="phone1">
+                    <div class="phone-slider__wallpaper">
+                        <img id="wallpaper1" src="assets/phone1.png" alt="Phone wallpaper">
+                    </div>
+                    <div class="phone-slider__button"></div>
+                    <div class="phone-slider__button-center"></div>
+                    <div class="phone-slider__speaker"></div>
+                    <div class="phone-slider__camera"></div>
+                </div>
+                <div class="slider__phone slider__phone--rotate phone-slider" id="phone2">
+                    <div class="phone-slider__wallpaper">
+                        <img id="wallpaper2" src="assets/phone2.png" alt="Phone wallpaper">
+                    </div>
+                    <div  class="phone-slider__button"></div>
+                    <div class="phone-slider__button-center"></div>
+                    <div class="phone-slider__speaker"></div>
+                    <div class="phone-slider__camera"></div>
+                </div>
             </div>
-            <div class="slider__phone slider__phone--rotate phone-slider">
-                <img class="phone-slider__wallpaper" src="assets/phone2.png" alt="Phone wallpaper">
-                <div  class="phone-slider__button"></div>
-                <div class="phone-slider__button-center"></div>
-                <div class="phone-slider__speaker"></div>
-                <div class="phone-slider__camera"></div>
+            <div class="slider__page2 display" id="page2">
+                <img class="slider__page2-image" src="assets/slider2.png" alt="Slider-2">
             </div>
-            <a class="slider__next-page" href="#"><img src="assets/next.png" alt="Next Page"></a>
+            <a class="slider__next-page" id="next_page" href="#"><img src="assets/chev2.png" alt="Next Page"></a>
         </section>
         <section class="services" id="services">
             <h2 class="services__title">Our Services</h2>
@@ -101,22 +110,22 @@
             <h2 class="portfolio__header">Portfolio</h2>
             <p class="portfolio__text">Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
             <nav class="portfolio__nav nav-portfolio">
-                <ul class="nav-portfolio__list">
+                <ul class="nav-portfolio__list" id="portfolio-list">
                     <li class="nav-portfolio__item">
-                        <a class="nav-portfolio__link" href="#portfolio">All</a>
+                        <a class="nav-portfolio__link" id="all" href="#portfolio">All</a>
                     </li>
                     <li class="nav-portfolio__item">
-                        <a class="nav-portfolio__link" href="#portfolio">Web Design</a>
+                        <a class="nav-portfolio__link" id="web" href="#portfolio">Web Design</a>
                     </li>
                     <li class="nav-portfolio__item">
-                        <a class="nav-portfolio__link" href="#portfolio">Graphic Design</a>
+                        <a class="nav-portfolio__link" id="graphic" href="#portfolio">Graphic Design</a>
                     </li>
                     <li class="nav-portfolio__item">
-                        <a class="nav-portfolio__link" href="#portfolio">Artwork</a>
+                        <a class="nav-portfolio__link" id="artwork" href="#portfolio">Artwork</a>
                     </li>
                 </ul>
             </nav>
-            <section class="portfolio__images images-portfolio">
+            <section class="portfolio__images images-portfolio" id="portfolio-images">
                 <img class="images-portfolio__item" src="assets/Image1.png" alt="Illustration">
                 <img class="images-portfolio__item" src="assets/Image2.png" alt="Illustration">
                 <img class="images-portfolio__item" src="assets/Image3.png" alt="Illustration">
@@ -223,12 +232,12 @@
             <h2 class="quote__title">Get a Quote</h2>
             <p class="quote__text">Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum. Duis mollis, non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
             <section class="form-and-contacts__columns">
-                <form class="form">
-                    <input class="form__input" type="text" id="name" name="name" placeholder="Name (Required)" pattern="^[A-Za-z\s]+$" title="Please enter your name using Latin characters." required>
-                    <input class="form__input" type="email" id="email" name="email" placeholder="Email (Required)" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Please enter a valid email address." required>
-                    <input class="form__input" type="text" id="subject" name="subject" placeholder="Subject">
-                    <textarea class="form__input--description" id="project-description" name="project-description" placeholder="Describe your project in detail..."></textarea>
-                    <input class="btn" type="submit" value="Submit">
+                <form class="form" id="form">
+                    <input class="form__input" type="text" id="name" name="name" maxlength="100" placeholder="Name (Required)" pattern="^[A-Za-z\s]+$" title="Please enter your name using Latin characters." required>
+                    <input class="form__input" type="email" id="email" name="email" maxlength="100" placeholder="Email (Required)" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Please enter a valid email address." required>
+                    <input class="form__input" type="text" id="subject" name="subject" maxlength="100" placeholder="Subject">
+                    <textarea class="form__input--description" id="description" name="description" maxlength="800" placeholder="Describe your project in detail..."></textarea>
+                    <input class="btn" id="btn" type="submit" value="Submit">
                 </form>
                 <aside class="contacts">
                     <h3 class="contacts__title">Contact Information</h3>
@@ -243,6 +252,16 @@
                     </address>
                 </aside>
             </section>
+            <div id="message-block" class="hidden">
+                <div id="message">
+                    <h3>Письмо отправлено</h3>
+                    <div class="message">
+                        <p id="subject-result"></p>
+                        <p id="description-result"></p>
+                    </div>
+                    <input class="close-btn" id="close-btn" type="button" value="OK">
+                </div>
+            </div>
         </section>
     </main>
     <footer class="footer">
@@ -270,5 +289,6 @@
             </li>
         </ul>
     </footer>
+    <script src="script.js"></script>
 </body>
 </html>
