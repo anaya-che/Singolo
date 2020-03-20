@@ -1,11 +1,32 @@
 // MENU
 
 const MENU = document.getElementById('header-menu');
+const sections = document.querySelectorAll('main>section');
+const links = document.querySelectorAll('a.nav-header__link');
 
 MENU.addEventListener('click', (event) => {
     MENU.querySelectorAll('a.nav-header__link').forEach(el => el.classList.remove('active'));
     event.target.classList.add('active');
 });
+
+document.addEventListener('scroll', onScroll);
+
+function onScroll() {
+    const curPos = window.scrollY + 95;
+    const pageEnd = document.documentElement.offsetHeight;
+    const totalHeight = window.scrollY + window.innerHeight;
+       
+    sections.forEach((el) => {
+        if (el.offsetTop <= curPos || totalHeight >= pageEnd) {
+            links.forEach((a) => {
+                a.classList.remove('active');
+                if (el.getAttribute('id') === a.getAttribute("href").substring(1)) {
+                a.classList.add('active');
+                } 
+            }) 
+        }
+    });
+}
 
 // SLIDER
 

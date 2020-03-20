@@ -470,6 +470,7 @@ img.active-img {
      padding: 59px 40px 13px 40px;
      border-bottom: 6px solid #ea676b;
      position: relative;
+     scroll-margin-top: 95px;
 }
 
 .quote__title {
