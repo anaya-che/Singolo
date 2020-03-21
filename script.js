@@ -113,14 +113,15 @@ function turnOffPhone2() {
 // PORTFOLIO
 
 const PORTFOLIO = document.getElementById('portfolio-images');
+const TAB = document.getElementById('portfolio-list');
+const TAB_LINKS = document.querySelectorAll('a.nav-portfolio__link');
 const ALL = document.getElementById('all');
 const WEB = document.getElementById('web');
 const GRAPHIC = document.getElementById('graphic');
 const ARTWORK = document.getElementById('artwork');
-const TAB = document.getElementById('portfolio-list');
 
 TAB.addEventListener('click', (event) => {
-    TAB.querySelectorAll('a.nav-portfolio__link').forEach(el => el.classList.remove('active-tab'));
+    TAB_LINKS.forEach(el => el.classList.remove('active-tab'));
     event.target.classList.add('active-tab');
 });
 
@@ -129,22 +130,17 @@ PORTFOLIO.addEventListener('click', (event) => {
     event.target.classList.add('active-img');
 });
 
-ALL.addEventListener('click', (event) => {
-    PORTFOLIO.querySelectorAll('img').forEach((el, i, arr) => (i < 1) ? (arr[i].style.gridArea = 'img' + (arr.length + i)) : (el.style.gridArea = 'img' + (i)));
-});
+ALL.addEventListener('click', changeOrder);
+WEB.addEventListener('click', changeOrder);
+GRAPHIC.addEventListener('click', changeOrder);
+ARTWORK.addEventListener('click', changeOrder);
 
-WEB.addEventListener('click', (event) => {
-    PORTFOLIO.querySelectorAll('img').forEach((el, i, arr) => (i < 2) ? (arr[i].style.gridArea = 'img' + (arr.length + i - 1)) : (el.style.gridArea = 'img' + (i - 1)));
-});
+let n = 1;
 
-GRAPHIC.addEventListener('click', (event) => {
-    PORTFOLIO.querySelectorAll('img').forEach((el, i, arr) => (i < 3) ? (arr[i].style.gridArea = 'img' + (arr.length + i - 2)) : (el.style.gridArea = 'img' + (i - 2)));
-});
-
-ARTWORK.addEventListener('click', (event) => {
-    PORTFOLIO.querySelectorAll('img').forEach((el, i, arr) => 
-        (i < 4) ? (arr[i].style.gridArea = 'img' + (arr.length + i - 3)) : (el.style.gridArea = 'img' + (i - 3)));
-    });
+function changeOrder() {
+    PORTFOLIO.querySelectorAll('img').forEach((el, i, arr) => arr[i].style.gridArea = 'img' + ((i + n + arr.length) % arr.length));
+    n++;
+}
 
 // FORM
 
