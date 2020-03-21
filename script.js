@@ -30,27 +30,57 @@ function onScroll() {
 
 // SLIDER
 
-const SLIDER = document.getElementById('slider');
-const PAGE_1 = document.getElementById('page1');
-const PAGE_2 = document.getElementById('page2');
+const SLIDER = document.querySelector('.slider-container');
 const PREV_PAGE = document.getElementById('prev_page');
 const NEXT_PAGE = document.getElementById('next_page');
+let items = document.querySelectorAll('.slider__page');
+let currentItem = 0;
+let isEnabled = true;
 
-PREV_PAGE.addEventListener("click", changeSlide);
-NEXT_PAGE.addEventListener("click", changeSlide);
-
-function changeSlide() {
-    if (SLIDER.classList.contains('blue')) {
-        SLIDER.classList.remove('blue');
-        PAGE_1.classList.remove('display');
-        PAGE_2.classList.add('display');
-    }
-    else {
-        SLIDER.classList.add('blue');
-        PAGE_2.classList.remove('display');
-        PAGE_1.classList.add('display');
-    }
+function changeCurrItem(n) {
+    currentItem = (n + items.length) % items.length;
 }
+
+function hideItem(direction) {
+    isEnabled = false;
+    items[currentItem].classList.add(direction);
+    items[currentItem].addEventListener('animationend', function() {
+        this.classList.remove('active', direction);
+    })
+}
+
+function showItem(direction) {
+    items[currentItem].classList.add('next', direction);
+    items[currentItem].addEventListener('animationend', function() {
+        this.classList.remove('next', direction);
+        this.classList.add('active');
+        isEnabled = true;
+    })
+}
+
+function previousItem(n) {
+    hideItem('to-right');
+    changeCurrItem(n - 1);
+    showItem('from-left');
+}
+
+function nextItem(n) {
+    hideItem('to-left');
+    changeCurrItem(n + 1);
+    showItem('from-right');
+}
+
+document.getElementById('prev_page').addEventListener('click', function() {
+    if (isEnabled) {
+        previousItem(currentItem);
+    }
+});
+
+document.getElementById('next_page').addEventListener('click', function() {
+    if (isEnabled) {
+        nextItem(currentItem);
+    }
+});
 
 // PHONES
 
