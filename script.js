@@ -4,11 +4,6 @@ const MENU = document.getElementById('header-menu');
 const sections = document.querySelectorAll('main>section');
 const links = document.querySelectorAll('a.nav-header__link');
 
-MENU.addEventListener('click', (event) => {
-    MENU.querySelectorAll('a.nav-header__link').forEach(el => el.classList.remove('active'));
-    event.target.classList.add('active');
-});
-
 document.addEventListener('scroll', onScroll);
 
 function onScroll() {
@@ -24,6 +19,8 @@ function onScroll() {
                 a.classList.add('active');
                 } 
             }) 
+        } if (window.scrollY === 0 || el.getAttribute('id') === 'slider') {
+            links[0].classList.add('active');
         }
     });
 }
@@ -154,11 +151,11 @@ BUTTON.addEventListener('click', (event) => {
         const subject = document.getElementById('subject').value.toString();
         const description = document.getElementById('description').value.toString();
         if (subject !== '') {
-            document.getElementById('subject-result').innerText = 'Тема: ' + subject;
-        } else document.getElementById('subject-result').innerText = 'Без темы';
+            document.getElementById('subject-result').innerText = 'Subject: ' + subject;
+        } else document.getElementById('subject-result').innerText = 'No subject';
         if (description !== '') {
-            document.getElementById('description-result').innerText = 'Описание: ' + description;
-        } else document.getElementById('description-result').innerText = 'Без описания';
+            document.getElementById('description-result').innerText = 'Description: ' + description;
+        } else document.getElementById('description-result').innerText = 'No description';
         document.getElementById('message-block').classList.remove('hidden');
         form.reset();
     }
