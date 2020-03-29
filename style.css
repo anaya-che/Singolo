@@ -129,9 +129,6 @@ a {
 }
 
 a.active {
-     /* border: 1px solid #f06c64;
-     padding: 4px 6.5px;
-     border-radius: 5px; */
      color: #f06c64;
 }
           /*** SLIDER ***/
@@ -1046,10 +1043,6 @@ img.active-img {
           gap: 6.4px;
           transition: 0.5s;
           z-index: 2;
-     }
-
-     .burger:hover>.burger-line {
-          background-color: #f06c64;
      }
 
      #burger_btn:checked ~ .burger {
