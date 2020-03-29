@@ -7,22 +7,57 @@ const links = document.querySelectorAll('a.nav-header__link');
 document.addEventListener('scroll', onScroll);
 
 function onScroll() {
-    const curPos = window.scrollY + 95;
+    const curPos = window.scrollY;
     const pageEnd = document.documentElement.offsetHeight;
     const totalHeight = window.scrollY + window.innerHeight;
+    const docWidth = document.body.clientWidth;
        
     sections.forEach((el) => {
-        if (el.offsetTop <= curPos || totalHeight >= pageEnd) {
-            links.forEach((a) => {
-                a.classList.remove('active');
-                if (el.getAttribute('id') === a.getAttribute("href").substring(1)) {
-                a.classList.add('active');
-                } 
-            }) 
-        } if (window.scrollY === 0 || el.getAttribute('id') === 'slider') {
-            links[0].classList.add('active');
+        if (docWidth >= 768) {
+            if (el.offsetTop <= curPos + 95 || totalHeight >= pageEnd) {
+                links.forEach((a) => {
+                    a.classList.remove('active');
+                    if (el.getAttribute('id') === a.getAttribute("href").substring(1)) {
+                    a.classList.add('active');
+                    } 
+                }) 
+            } if (window.scrollY === 0 || el.getAttribute('id') === 'slider') {
+                links[0].classList.add('active');
+            }
+        }
+
+        if (docWidth < 768) {
+            if (el.offsetTop <= curPos + 71 || totalHeight >= pageEnd) {
+                links.forEach((a) => {
+                    a.classList.remove('active');
+                    if (el.getAttribute('id') === a.getAttribute("href").substring(1)) {
+                    a.classList.add('active');
+                    } 
+                }) 
+            } if (window.scrollY === 0 || el.getAttribute('id') === 'slider') {
+                links[0].classList.add('active');
+            }
         }
     });
+}
+
+const burger = document.getElementById('burger_btn');
+const burger_label = document.querySelector('.burger');
+burger_label.addEventListener("click", openMenu);
+MENU.addEventListener("click", closeMenu);
+
+function openMenu() {
+    if (burger.hasAttribute('checked')) {
+        burger.removeAttribute('checked');
+    }
+    else {burger.setAttribute('checked', '');}
+    
+}
+
+function closeMenu() {
+    if (burger.hasAttribute('checked')) {
+        burger.removeAttribute('checked');
+    }  
 }
 
 // SLIDER
@@ -117,6 +152,7 @@ const WEB = document.getElementById('web');
 const GRAPHIC = document.getElementById('graphic');
 const ARTWORK = document.getElementById('artwork');
 
+
 TAB.addEventListener('click', (event) => {
     TAB_LINKS.forEach(el => el.classList.remove('active-tab'));
     event.target.classList.add('active-tab');
@@ -133,10 +169,14 @@ GRAPHIC.addEventListener('click', changeOrder);
 ARTWORK.addEventListener('click', changeOrder);
 
 let n = 1;
+let IMAGES = [];
+document.querySelectorAll('.images-portfolio__item').forEach((el) => IMAGES.push(el));
 
 function changeOrder() {
-    PORTFOLIO.querySelectorAll('img').forEach((el, i, arr) => arr[i].style.gridArea = 'img' + ((i + n + arr.length) % arr.length));
+    let IMAGES2 = IMAGES.map((el, i, arr) => el = arr[((i + n + arr.length) % arr.length)]);
     n++;
+    PORTFOLIO.innerHTML = '';
+    IMAGES2.forEach((el, i, arr) => PORTFOLIO.append(arr[i]));
 }
 
 // FORM
